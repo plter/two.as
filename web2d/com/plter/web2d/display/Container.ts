@@ -8,8 +8,8 @@ namespace com.plter.web2d.display {
     export abstract class Container extends Display {
 
 
-        constructor(context:Context, object3D:THREE.Object3D) {
-            super(context, object3D);
+        constructor(context:Context) {
+            super(context, new THREE.Mesh());
         }
 
         remove(display:Display):void {

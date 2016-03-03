@@ -17,8 +17,8 @@ var com;
             (function (display_1) {
                 var Container = (function (_super) {
                     __extends(Container, _super);
-                    function Container(context, object3D) {
-                        _super.call(this, context, object3D);
+                    function Container(context) {
+                        _super.call(this, context, new THREE.Mesh());
                     }
                     Container.prototype.remove = function (display) {
                         this.object3D.remove(display.object3D);

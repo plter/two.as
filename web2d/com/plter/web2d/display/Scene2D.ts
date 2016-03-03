@@ -10,14 +10,12 @@ namespace com.plter.web2d.display {
     import EventListenerList = com.plter.web2d.core.EventListenerList;
     export class Scene2D extends Container {
 
-        private _mesh:THREE.Mesh;
         private _onUpdate:EventListenerList;
 
         constructor(context:Context) {
             this._onUpdate = new EventListenerList();
-            this._mesh = new THREE.Mesh();
 
-            super(context, this._mesh);
+            super(context);
         }
 
         update(dt:number):void {

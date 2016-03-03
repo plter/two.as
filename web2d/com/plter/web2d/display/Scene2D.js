@@ -22,8 +22,7 @@ var com;
                     __extends(Scene2D, _super);
                     function Scene2D(context) {
                         this._onUpdate = new EventListenerList();
-                        this._mesh = new THREE.Mesh();
-                        _super.call(this, context, this._mesh);
+                        _super.call(this, context);
                     }
                     Scene2D.prototype.update = function (dt) {
                     };
