@@ -5,7 +5,7 @@
 
 namespace com.plter.web2d.display {
 
-    export abstract class Container extends Display {
+    export class Container extends Display {
 
 
         constructor(context:Context) {
