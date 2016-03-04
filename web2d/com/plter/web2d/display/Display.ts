@@ -17,6 +17,7 @@ namespace com.plter.web2d.display {
         constructor(context:Context, object3D:Object3D) {
             this._object3D = object3D;
             this._context = context;
+            this._object3D["display"] = this;
         }
 
         get object3D():Object3D {

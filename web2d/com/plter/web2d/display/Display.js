@@ -15,6 +15,7 @@ var com;
                     function Display(context, object3D) {
                         this._object3D = object3D;
                         this._context = context;
+                        this._object3D["display"] = this;
                     }
                     Object.defineProperty(Display.prototype, "object3D", {
                         get: function () {
