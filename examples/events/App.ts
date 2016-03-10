@@ -1,4 +1,4 @@
-///<reference path="../../web2d/com/plter/web2d/tools/EventListenerList.ts"/>
+///<reference path="../../two/com/plter/two/events/EventListenerList.ts"/>
 
 /**
  * Created by plter on 3/1/16.
@@ -7,7 +7,6 @@
 namespace plter {
 
     export class App {
-
 
         private static __ins:App = null;
 
@@ -18,9 +17,8 @@ namespace plter {
             return App.__ins;
         }
 
-
         constructor() {
-            var ell:com.plter.web2d.core.EventListenerList = new com.plter.web2d.core.EventListenerList();
+            var ell:com.plter.two.events.EventListenerList = new com.plter.two.events.EventListenerList();
             ell.add(function (e:Event, sender:any):boolean {
                 console.log("Event dispatched");
                 return true;
@@ -29,9 +27,6 @@ namespace plter {
         }
     }
 }
-
-
-
 
 
 plter.App.getInstance();

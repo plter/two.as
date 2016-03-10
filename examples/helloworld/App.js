@@ -1,5 +1,5 @@
-///<reference path="../../web2d/com/plter/web2d/Web2D.ts"/>
-///<reference path="../../web2d/com/plter/web2d/display/Image.ts"/>
+///<reference path="../../two/com/plter/two/Two.ts"/>
+///<reference path="../../two/com/plter/two/display/Image.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -10,10 +10,10 @@ var __extends = (this && this.__extends) || function (d, b) {
  */
 var plter;
 (function (plter) {
-    var Web2D = com.plter.web2d.Web2D;
-    var Scene2D = com.plter.web2d.display.Scene2D;
+    var Two = com.plter.two.Two;
+    var Scene2D = com.plter.two.display.Scene2D;
     var TextureLoader = THREE.TextureLoader;
-    var Image = com.plter.web2d.display.Image;
+    var Image = com.plter.two.display.Image;
     var HelloWorldScene = (function (_super) {
         __extends(HelloWorldScene, _super);
         function HelloWorldScene(context) {
@@ -46,7 +46,7 @@ var plter;
             this.presentScene(this.rootScene);
         }
         return App;
-    })(Web2D);
+    })(Two);
     plter.App = App;
 })(plter || (plter = {}));
 new plter.App();

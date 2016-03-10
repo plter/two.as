@@ -1,4 +1,4 @@
-///<reference path="../../web2d/com/plter/web2d/tools/EventListenerList.ts"/>
+///<reference path="../../two/com/plter/two/events/EventListenerList.ts"/>
 /**
  * Created by plter on 3/1/16.
  */
@@ -6,7 +6,7 @@ var plter;
 (function (plter) {
     var App = (function () {
         function App() {
-            var ell = new com.plter.web2d.core.EventListenerList();
+            var ell = new com.plter.two.events.EventListenerList();
             ell.add(function (e, sender) {
                 console.log("Event dispatched");
                 return true;

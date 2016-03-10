@@ -1,5 +1,5 @@
-///<reference path="../../web2d/com/plter/web2d/Web2D.ts"/>
-///<reference path="../../web2d/com/plter/web2d/display/Image.ts"/>
+///<reference path="../../two/com/plter/two/Two.ts"/>
+///<reference path="../../two/com/plter/two/display/Image.ts"/>
 
 /**
  * Created by plter on 3/3/16.
@@ -7,18 +7,18 @@
 
 namespace plter {
 
-    import Web2D = com.plter.web2d.Web2D;
-    import Scene2D = com.plter.web2d.display.Scene2D;
+    import Two = com.plter.two.Two;
+    import Scene2D = com.plter.two.display.Scene2D;
     import TextureLoader = THREE.TextureLoader;
-    import Image = com.plter.web2d.display.Image;
+    import Image = com.plter.two.display.Image;
     import Texture = THREE.Texture;
-    import Context = com.plter.web2d.Context;
+    import Context = com.plter.two.Context;
 
     class HelloWorldScene extends Scene2D {
 
         private img:Image;
 
-        constructor(context:Web2D) {
+        constructor(context:Two) {
             super(context);
 
             var loader = new TextureLoader();
@@ -33,9 +33,9 @@ namespace plter {
                 }.bind(this));
             }.bind(this));
 
-            this.uiListeners.add(function (e:com.plter.web2d.events.MouseEvent) {
+            this.uiListeners.add(function (e:com.plter.two.events.MouseEvent) {
                 if (e.name == "click") {
-                    if ((this.context as Web2D).hitTest(this.img, e.x, e.y)) {
+                    if ((this.context as Two).hitTest(this.img, e.x, e.y)) {
                         alert("Image clicked");
                     }
                 }
@@ -43,7 +43,7 @@ namespace plter {
         }
     }
 
-    export class App extends Web2D {
+    export class App extends Two {
 
         private rootScene:Scene2D;
 
