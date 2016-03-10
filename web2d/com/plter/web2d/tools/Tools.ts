@@ -5,7 +5,7 @@
  * Created by plter on 3/4/16.
  */
 
-namespace com.plter.web2d.core {
+namespace com.plter.web2d.tools {
 
 
     import Object3D = THREE.Object3D;

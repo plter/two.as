@@ -18,7 +18,7 @@ namespace plter {
 
         private img:Image;
 
-        constructor(context:Context) {
+        constructor(context:Web2D) {
             super(context);
 
             var loader = new TextureLoader();
@@ -32,20 +32,27 @@ namespace plter {
                     this.img.rotation.y += 0.01;
                 }.bind(this));
             }.bind(this));
+
+            this.uiListeners.add(function (e:com.plter.web2d.events.MouseEvent) {
+                if (e.name == "click") {
+                    if ((this.context as Web2D).hitTest(this.img, e.x, e.y)) {
+                        alert("Image clicked");
+                    }
+                }
+            }.bind(this));
         }
     }
 
-    export class App {
+    export class App extends Web2D {
 
-        private web2d:Web2D;
         private rootScene:Scene2D;
 
         constructor() {
-            this.web2d = new Web2D(800, 520);
-            document.body.appendChild(this.web2d.domElement);
+            super(800, 520);
+            document.body.appendChild(this.domElement);
 
-            this.rootScene = new HelloWorldScene(this.web2d);
-            this.web2d.presentScene(this.rootScene);
+            this.rootScene = new HelloWorldScene(this);
+            this.presentScene(this.rootScene);
         }
     }
 }

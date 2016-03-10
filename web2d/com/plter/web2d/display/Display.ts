@@ -1,5 +1,7 @@
 ///<reference path="../../../../../3rd/libs/3js/three.d.ts"/>
 ///<reference path="../Context.ts"/>
+///<reference path="../events/EventListenerList.ts"/>
+
 /**
  * Created by plter on 3/3/16.
  */
@@ -23,7 +25,6 @@ namespace com.plter.web2d.display {
         get object3D():Object3D {
             return this._object3D;
         }
-
 
         get context():com.plter.web2d.Context {
             return this._context;

@@ -1,5 +1,6 @@
 ///<reference path="../../../../../3rd/libs/3js/three.d.ts"/>
 ///<reference path="../Context.ts"/>
+///<reference path="../events/EventListenerList.ts"/>
 /**
  * Created by plter on 3/3/16.
  */

@@ -1,5 +1,5 @@
-///<reference path="ArrayTools.ts"/>
 ///<reference path="Event.ts"/>
+///<reference path="../tools/ArrayTools.ts"/>
 /**
  * Created by plter on 2/29/16.
  */
@@ -9,8 +9,9 @@ var com;
     (function (plter) {
         var web2d;
         (function (web2d) {
-            var core;
-            (function (core) {
+            var events;
+            (function (events) {
+                var ArrayTools = com.plter.web2d.tools.ArrayTools;
                 var EventListenerList = (function () {
                     function EventListenerList() {
                         this.list = [];
@@ -19,7 +20,7 @@ var com;
                         this.list.push(listener);
                     };
                     EventListenerList.prototype.remove = function (listener) {
-                        core.ArrayTools.deleteFromArray(listener, this.list);
+                        ArrayTools.deleteFromArray(listener, this.list);
                     };
                     /**
                      *
@@ -40,8 +41,8 @@ var com;
                     };
                     return EventListenerList;
                 })();
-                core.EventListenerList = EventListenerList;
-            })(core = web2d.core || (web2d.core = {}));
+                events.EventListenerList = EventListenerList;
+            })(events = web2d.events || (web2d.events = {}));
         })(web2d = plter.web2d || (plter.web2d = {}));
     })(plter = com.plter || (com.plter = {}));
 })(com || (com = {}));

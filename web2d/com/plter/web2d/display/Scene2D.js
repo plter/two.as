@@ -1,6 +1,7 @@
 ///<reference path="../../../../../3rd/libs/3js/three.d.ts"/>
 ///<reference path="Container.ts"/>
-///<reference path="../core/EventListenerList.ts"/>
+///<reference path="../events/EventListenerList.ts"/>
+///<reference path="../Web2D.ts"/>
 /**
  * Created by plter on 3/3/16.
  */
@@ -17,7 +18,7 @@ var com;
         (function (web2d) {
             var display;
             (function (display) {
-                var EventListenerList = com.plter.web2d.core.EventListenerList;
+                var EventListenerList = com.plter.web2d.events.EventListenerList;
                 var Scene2D = (function (_super) {
                     __extends(Scene2D, _super);
                     function Scene2D(context) {
@@ -29,6 +30,20 @@ var com;
                     Object.defineProperty(Scene2D.prototype, "onUpdate", {
                         get: function () {
                             return this._onUpdate;
+                        },
+                        enumerable: true,
+                        configurable: true
+                    });
+                    Object.defineProperty(Scene2D.prototype, "web2d", {
+                        get: function () {
+                            return this.context;
+                        },
+                        enumerable: true,
+                        configurable: true
+                    });
+                    Object.defineProperty(Scene2D.prototype, "uiListeners", {
+                        get: function () {
+                            return this.web2d.eventListeners;
                         },
                         enumerable: true,
                         configurable: true

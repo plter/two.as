@@ -1,4 +1,4 @@
-///<reference path="../../web2d/com/plter/web2d/core/EventListenerList.ts"/>
+///<reference path="../../web2d/com/plter/web2d/tools/EventListenerList.ts"/>
 /**
  * Created by plter on 3/1/16.
  */

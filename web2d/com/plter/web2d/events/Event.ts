@@ -2,7 +2,7 @@
  * Created by plter on 2/29/16.
  */
 
-namespace com.plter.web2d.core {
+namespace com.plter.web2d.events {
 
     export class Event {
 

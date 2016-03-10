@@ -9,8 +9,8 @@ var com;
     (function (plter) {
         var web2d;
         (function (web2d) {
-            var core;
-            (function (core) {
+            var tools;
+            (function (tools) {
                 var Tools = (function () {
                     function Tools() {
                     }
@@ -19,8 +19,8 @@ var com;
                     };
                     return Tools;
                 })();
-                core.Tools = Tools;
-            })(core = web2d.core || (web2d.core = {}));
+                tools.Tools = Tools;
+            })(tools = web2d.tools || (web2d.tools = {}));
         })(web2d = plter.web2d || (plter.web2d = {}));
     })(plter = com.plter || (com.plter = {}));
 })(com || (com = {}));

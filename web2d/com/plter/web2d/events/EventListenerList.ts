@@ -1,11 +1,12 @@
-///<reference path="ArrayTools.ts"/>
 ///<reference path="Event.ts"/>
+///<reference path="../tools/ArrayTools.ts"/>
 /**
  * Created by plter on 2/29/16.
  */
 
-namespace com.plter.web2d.core {
+namespace com.plter.web2d.events {
 
+    import ArrayTools = com.plter.web2d.tools.ArrayTools;
     export class EventListenerList {
         private list:Array<(e:Event, a:any)=>boolean> = [];
 

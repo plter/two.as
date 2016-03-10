@@ -27,18 +27,26 @@ var plter;
                     this.img.rotation.y += 0.01;
                 }.bind(this));
             }.bind(this));
+            this.uiListeners.add(function (e) {
+                if (e.name == "click") {
+                    if (this.context.hitTest(this.img, e.x, e.y)) {
+                        alert("Image clicked");
+                    }
+                }
+            }.bind(this));
         }
         return HelloWorldScene;
     })(Scene2D);
-    var App = (function () {
+    var App = (function (_super) {
+        __extends(App, _super);
         function App() {
-            this.web2d = new Web2D(800, 520);
-            document.body.appendChild(this.web2d.domElement);
-            this.rootScene = new HelloWorldScene(this.web2d);
-            this.web2d.presentScene(this.rootScene);
+            _super.call(this, 800, 520);
+            document.body.appendChild(this.domElement);
+            this.rootScene = new HelloWorldScene(this);
+            this.presentScene(this.rootScene);
         }
         return App;
-    })();
+    })(Web2D);
     plter.App = App;
 })(plter || (plter = {}));
 new plter.App();

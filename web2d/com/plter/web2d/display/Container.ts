@@ -9,7 +9,7 @@ namespace com.plter.web2d.display {
 
 
         constructor(context:Context) {
-            super(context, new THREE.Mesh());
+            super(context, new THREE.Object3D());
         }
 
         remove(display:Display):void {

@@ -7,8 +7,8 @@ var com;
     (function (plter) {
         var web2d;
         (function (web2d) {
-            var core;
-            (function (core) {
+            var events;
+            (function (events) {
                 var Event = (function () {
                     function Event(name, data) {
                         if (name === void 0) { name = null; }
@@ -33,8 +33,8 @@ var com;
                     });
                     return Event;
                 })();
-                core.Event = Event;
-            })(core = web2d.core || (web2d.core = {}));
+                events.Event = Event;
+            })(events = web2d.events || (web2d.events = {}));
         })(web2d = plter.web2d || (plter.web2d = {}));
     })(plter = com.plter || (com.plter = {}));
 })(com || (com = {}));

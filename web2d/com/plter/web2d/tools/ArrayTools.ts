@@ -3,7 +3,7 @@
  */
 
 
-namespace com.plter.web2d.core {
+namespace com.plter.web2d.tools {
     export class ArrayTools {
 
         /**
