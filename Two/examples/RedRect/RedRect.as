@@ -1,6 +1,6 @@
 package {
-public class Main {
-    public function Main() {
+public class RedRect {
+    public function RedRect() {
 
         var canvas:HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement;
         var context:CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D;

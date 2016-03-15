@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="Two">
     <configurations>
-      <configuration name="Two" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/Two">
+      <configuration name="Two" pure-as="true" main-class="UIEventExample" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/Two">
         <dependencies target-player="20.0">
           <entries>
             <entry library-name="asjsc" library-level="application">
@@ -27,7 +27,7 @@
       <sourceFolder url="file://$MODULE_DIR$/LibTwo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/ThreeJSBox" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/HelloTwo" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/examples/UIEvent" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/UIEventExample" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="ApacheFlexJS_0.5.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />

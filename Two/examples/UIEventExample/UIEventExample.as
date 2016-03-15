@@ -5,8 +5,8 @@ package {
 import com.plter.two.app.Two;
 import com.plter.uievent.MainScene;
 
-public class Main extends Two{
-    public function Main() {
+public class UIEventExample extends Two{
+    public function UIEventExample() {
         document.body.appendChild(domElement);
         presentScene(new MainScene(this));
     }

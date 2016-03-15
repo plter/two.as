@@ -2,4 +2,4 @@
 
 /opt/flash/ApacheFlexJS_0.5.0/js/bin/asjsc \
     -source-path+=../../LibTwo \
-    Main.as
+    ThreeJSBox.as
