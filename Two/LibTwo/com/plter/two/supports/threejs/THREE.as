@@ -18,5 +18,7 @@ public class THREE {
     public static const PlaneGeometry:Class = three['PlaneGeometry'];
     public static const MeshBasicMaterial:Class = three['MeshBasicMaterial'];
     public static const Color:Class = three['Color'];
+    public static const Vector2:Class = three['Vector2'];
+    public static const Raycaster:Class = three['Raycaster'];
 }
 }

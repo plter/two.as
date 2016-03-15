@@ -14,11 +14,11 @@ public class Container extends Display {
     }
 
     public function addChild(display:Display):void {
-        bindedObject3D['add'](display.bindedObject3D);
+        threeJsObject['add'](display.threeJsObject);
     }
 
     public function removeChild(display:Display):void {
-        bindedObject3D['remove'](display.bindedObject3D);
+        threeJsObject['remove'](display.threeJsObject);
     }
 
 
@@ -27,7 +27,7 @@ public class Container extends Display {
             _children.pop();
         }
 
-        var children3D:* = bindedObject3D['children'];
+        var children3D:* = threeJsObject['children'];
         var length:int = children3D['length'];
         for (var i:int = 0; i < length; i++) {
             _children.push(children3D[i]['displayObject']);

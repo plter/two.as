@@ -3,25 +3,32 @@
  */
 package com.plter.two.display {
 import com.plter.two.app.Context;
+import com.plter.two.supports.threejs.THREE;
 
-public class Display {
+import org.apache.flex.events.EventDispatcher;
 
-    private var _bindedObject3D:*;
+public class Display extends EventDispatcher {
+
+    private var _threeJsObject:*;
     private var _context:Context;
 
     public function Display(context:Context, object3D:*) {
         _context = context;
-        _bindedObject3D = object3D;
+        _threeJsObject = object3D;
 
-        _bindedObject3D['displayObject'] = this;
+        _threeJsObject['displayObject'] = this;
     }
 
-    public function get bindedObject3D():* {
-        return _bindedObject3D;
+    public function get threeJsObject():* {
+        return _threeJsObject;
     }
 
     public function get context():Context {
         return _context;
+    }
+
+    public function hitTest(pointX:Number, pointY:Number):Boolean {
+        return displayHitTestPoint(pointX, pointY, this, context);
     }
 
     public function get x():Number {
@@ -73,11 +80,24 @@ public class Display {
     }
 
     private function get position():* {
-        return bindedObject3D['position'];
+        return threeJsObject['position'];
     }
 
     private function get rotation():* {
-        return bindedObject3D['rotation'];
+        return threeJsObject['rotation'];
+    }
+
+
+    //Hit test tool
+    private static var _raycast:* = new THREE.Raycaster();
+    private static var _point:* = new THREE.Vector2();
+
+    private static function displayHitTestPoint(x:Number, y:Number, display:Display, context:Context):Boolean {
+        _point['x'] = x;
+        _point['y'] = y;
+
+        _raycast['setFromCamera'](_point, context.camera);
+        return _raycast['intersectObject'](display.threeJsObject)['length'] > 0;
     }
 }
 }

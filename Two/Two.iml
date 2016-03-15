@@ -27,6 +27,7 @@
       <sourceFolder url="file://$MODULE_DIR$/LibTwo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/ThreeJSBox" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/HelloTwo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/UIEvent" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="ApacheFlexJS_0.5.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />

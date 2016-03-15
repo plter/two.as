@@ -7,18 +7,29 @@ import org.apache.flex.events.Event;
 public class TextureLoaderEvent extends org.apache.flex.events.Event {
 
 
-    public static const ON_LOAD:String = "onLoad";
-    private var _texture:Texture;
+    public static const COMPLETE:String = "complete";
+    public static const PROGRESS:String = "progress";
+    public static const ERROR:String = "error";
 
-    public function TextureLoaderEvent(type:String, texture:Texture) {
+
+    private var _texture:Texture;
+    private var _progress:Number;
+
+    public function TextureLoaderEvent(type:String, texture:Texture = null, progress:Number = 0) {
         super(type, false, false);
 
         _texture = texture;
+        _progress = progress;
     }
 
 
     public function get texture():Texture {
         return _texture;
+    }
+
+
+    public function get progress():Number {
+        return _progress;
     }
 
     override public function cloneEvent():org.apache.flex.events.Event {

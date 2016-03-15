@@ -6,10 +6,10 @@ import com.plter.two.app.Context;
 import com.plter.two.supports.threejs.THREE;
 import com.plter.two.supports.threejs.Texture;
 
-public class Image extends Display {
+public class Bitmap extends Display {
 
 
-    public function Image(context:Context, texture:Texture) {
+    public function Bitmap(context:Context, texture:Texture) {
 
         var ratio:Number = 2 / context.stage.stageHeight;
 

@@ -9,8 +9,11 @@ public class Scene extends Container {
         super(context);
     }
 
-    public function update():void{
+    public function update(dt:uint):void {
 
+    }
+
+    public function onUiEvent(type:String, x:Number, y:Number, e:MouseEvent):void {
     }
 }
 }

@@ -5,7 +5,9 @@ package com.plter.two.supports.threejs {
 import org.apache.flex.events.EventDispatcher;
 
 
-[Event(name="onLoad", type="com.plter.two.supports.threejs.TextureLoaderEvent")]
+[Event(name="complete", type="com.plter.two.supports.threejs.TextureLoaderEvent")]
+[Event(name="progress", type="com.plter.two.supports.threejs.TextureLoaderEvent")]
+[Event(name="error", type="com.plter.two.supports.threejs.TextureLoaderEvent")]
 public class TextureLoader extends EventDispatcher {
 
     private var loader:*;
@@ -16,13 +18,21 @@ public class TextureLoader extends EventDispatcher {
     }
 
     public function load(url:String):void {
-        loader['load'](url, loaded);
+        loader['load'](url, completeHandler, progressHandler, errorHandler);
     }
 
-    private function loaded(texture:*):void {
+    private function errorHandler():void {
+        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.ERROR));
+    }
+
+    private function progressHandler(progress):void {
+        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.PROGRESS, null, progress['loaded'] / progress['total']));
+    }
+
+    private function completeHandler(texture:*):void {
         var t:Texture = new Texture();
         t.setThreejsTexture(texture);
-        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.ON_LOAD, t));
+        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.COMPLETE, t));
     }
 }
 }
