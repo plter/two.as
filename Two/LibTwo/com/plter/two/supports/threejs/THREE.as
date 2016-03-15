@@ -15,6 +15,7 @@ public class THREE {
     public static const Object3D:Class = three['Object3D'];
     public static const DoubleSide:* = three['DoubleSide'];
     public static const TextureLoader:Class = three['TextureLoader'];
+    public static const Texture:Class = three['Texture'];
     public static const PlaneGeometry:Class = three['PlaneGeometry'];
     public static const MeshBasicMaterial:Class = three['MeshBasicMaterial'];
     public static const Color:Class = three['Color'];

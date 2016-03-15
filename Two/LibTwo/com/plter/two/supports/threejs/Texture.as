@@ -6,7 +6,8 @@ public class Texture {
 
     private var _threejsTexture:*;
 
-    public function Texture() {
+    public function Texture(threejsTexture:*) {
+        _threejsTexture = threejsTexture;
     }
 
 
@@ -14,12 +15,16 @@ public class Texture {
         return _threejsTexture;
     }
 
+    public function set threejsTexture(value:*):void {
+        _threejsTexture = value;
+    }
+
     public function get image():HTMLImageElement {
         return threejsTexture['image'];
     }
 
-    internal function setThreejsTexture(value:*):void {
-        _threejsTexture = value;
+    public function set image(v:HTMLImageElement):void {
+        threejsTexture['image'] = v;
     }
 }
 }

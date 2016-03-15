@@ -30,9 +30,7 @@ public class TextureLoader extends EventDispatcher {
     }
 
     private function completeHandler(texture:*):void {
-        var t:Texture = new Texture();
-        t.setThreejsTexture(texture);
-        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.COMPLETE, t));
+        dispatchEvent(new TextureLoaderEvent(TextureLoaderEvent.COMPLETE, new Texture(texture)));
     }
 }
 }
