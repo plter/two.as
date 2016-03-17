@@ -14,7 +14,6 @@ public class Main extends Two {
 
         document.body.appendChild(domElement);
         presentScene(new MainScene(this));
-
     }
 }
 }

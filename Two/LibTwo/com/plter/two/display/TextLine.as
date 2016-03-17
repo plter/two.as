@@ -32,7 +32,7 @@ public class TextLine extends Bitmap {
         _text = value;
 
         refreshTextureByNewValues();
-        needUpdateBounds();
+        protected_updateGeometry(texture);
     }
 
     public function get fontSize():uint {
@@ -43,7 +43,7 @@ public class TextLine extends Bitmap {
         _fontSize = value;
 
         refreshTextureByNewValues();
-        needUpdateBounds();
+        protected_updateGeometry(texture);
     }
 
     public function get fontFamily():String {
@@ -54,7 +54,7 @@ public class TextLine extends Bitmap {
         _fontFamily = value;
 
         refreshTextureByNewValues();
-        needUpdateBounds();
+        protected_updateGeometry(texture);
     }
 
     public function get font():String {
@@ -66,7 +66,6 @@ public class TextLine extends Bitmap {
         _fillStyle = value;
 
         refreshTextureByNewValues();
-        needUpdateBounds();
     }
 
     public function get fillStyle():String {

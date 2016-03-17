@@ -16,12 +16,11 @@ public class Bitmap extends Display {
 
         _ratio = 2 / context.stage.stageHeight;
 
-        var geom:* = new THREE.PlaneGeometry(texture.image['width'] * _ratio, texture.image['height'] * _ratio);
         var mat:* = new THREE.MeshBasicMaterial();//{color: 0xffffff, side: THREE.DoubleSide, map: texture.threejsTexture}
         mat['color'] = new THREE.Color(0xffffff);
         mat['side'] = THREE.DoubleSide;
         mat['map'] = texture.threejsTexture;
-        var object3D:* = new THREE.Mesh(geom, mat);
+        var object3D:* = new THREE.Mesh(createPlaneGeometryByTextureSize(texture), mat);
         super(context, object3D);
 
         _texture = texture;
@@ -37,8 +36,12 @@ public class Bitmap extends Display {
         threeJsObject['material']['map'] = value.threejsTexture;
     }
 
-    public function needUpdateBounds():void {
-        threeJsObject['geometry'] = new THREE.PlaneGeometry(texture.image['width'] * _ratio, texture.image['height'] * _ratio);
+    protected function protected_updateGeometry(texture:Texture):void {
+        threeJsObject['geometry'] = createPlaneGeometryByTextureSize(texture);
+    }
+
+    private function createPlaneGeometryByTextureSize(texture:Texture):* {
+        return new THREE.PlaneGeometry(texture.image['width'] * _ratio, texture.image['height'] * _ratio);
     }
 }
 }
