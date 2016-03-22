@@ -1,103 +1,112 @@
 /**
- * Created by plter on 3/12/16.
+ * Created by plter on 3/14/16.
  */
 package com.plter.two.display {
 import com.plter.two.app.Context;
 import com.plter.two.supports.threejs.THREE;
 
-import org.apache.flex.events.EventDispatcher;
+public class Display extends Node {
 
-public class Display extends EventDispatcher {
 
-    private var _threeJsObject:*;
-    private var _context:Context;
+    private var _texture:*;
+    private var _ratio:Number;
+    private var _canvas:HTMLCanvasElement;
+    private var _context2d:CanvasRenderingContext2D;
 
-    public function Display(context:Context, object3D:*) {
-        _context = context;
-        _threeJsObject = object3D;
+    public function Display(context:Context) {
 
-        _threeJsObject['displayObject'] = this;
-    }
+        _ratio = 2 / context.stage.stageHeight;
 
-    public function get threeJsObject():* {
-        return _threeJsObject;
-    }
+        _canvas = document.createElement("canvas") as HTMLCanvasElement;
+        _canvas.width = 256;
+        _canvas.height = 256;
+        _context2d = _canvas.getContext("2d") as CanvasRenderingContext2D;
 
-    public function get context():Context {
-        return _context;
-    }
+        _texture = new THREE.Texture(_canvas);
 
-    public function hitTest(pointX:Number, pointY:Number):Boolean {
-        return displayHitTestPoint(pointX, pointY, this, context);
-    }
+        var mat:* = new THREE.MeshBasicMaterial();
+        mat['side'] = THREE.DoubleSide;
+        mat['map'] = texture;
+        var object3D:* = new THREE.Mesh(new THREE.PlaneGeometry(_canvas.width * _ratio, _canvas.height * _ratio), mat);
+        super(context, object3D);
 
-    public function get x():Number {
-        return position['x'];
-    }
-
-    public function get y():Number {
-        return position['y'];
-    }
-
-    public function get z():Number {
-        return position['z'];
-    }
-
-    public function set x(value:Number):void {
-        position['x'] = value;
-    }
-
-    public function set y(value:Number):void {
-        position['y'] = value;
-    }
-
-    public function set z(value:Number):void {
-        position['z'] = value;
-    }
-
-    public function get rotationX():Number {
-        return rotation['x'];
-    }
-
-    public function get rotationY():Number {
-        return rotation['y'];
-    }
-
-    public function get rotationZ():Number {
-        return rotation['z'];
-    }
-
-    public function set rotationX(value:Number):void {
-        rotation['x'] = value;
-    }
-
-    public function set rotationY(value:Number):void {
-        rotation['y'] = value;
-    }
-
-    public function set rotationZ(value:Number):void {
-        rotation['z'] = value;
-    }
-
-    private function get position():* {
-        return threeJsObject['position'];
-    }
-
-    private function get rotation():* {
-        return threeJsObject['rotation'];
+        _texture = texture;
     }
 
 
-    //Hit test tool
-    private static var _raycast:* = new THREE.Raycaster();
-    private static var _point:* = new THREE.Vector2();
+    public function get width():Number {
+        return widthInPixel * _ratio;
+    }
 
-    private static function displayHitTestPoint(x:Number, y:Number, display:Display, context:Context):Boolean {
-        _point['x'] = x;
-        _point['y'] = y;
+    public function get widthInPixel():Number {
+        return canvas.width;
+    }
 
-        _raycast['setFromCamera'](_point, context.camera);
-        return _raycast['intersectObject'](display.threeJsObject)['length'] > 0;
+    public function get height():Number {
+        return heightInPixel * _ratio;
+    }
+
+    public function get heightInPixel():Number {
+        return canvas.height;
+    }
+
+    public function set width(value:Number):void {
+        widthInPixel = value / _ratio;
+    }
+
+    public function set widthInPixel(value:Number):void {
+        if (canvas.width != value) {
+            resizeGeometry(value, heightInPixel);
+        }
+
+        canvas.width = value;
+    }
+
+    public function set height(value:Number):void {
+        heightInPixel = value / _ratio;
+    }
+
+    public function set heightInPixel(value:Number):void {
+        if (canvas.height != value) {
+            resizeGeometry(widthInPixel, value);
+        }
+
+        canvas.height = value;
+    }
+
+    public function setSize(width:Number, height:Number):void {
+        setSizeInPixel(width / _ratio, height / _ratio);
+    }
+
+    public function setSizeInPixel(width:Number, height:Number):void {
+        if (canvas.width != width || canvas.height != height) {
+            resizeGeometry(width, height);
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+
+    public function get texture():* {
+        return _texture;
+    }
+
+    private function get canvas():HTMLCanvasElement {
+        return _canvas;
+    }
+
+    public function get context2d():CanvasRenderingContext2D {
+        return _context2d;
+    }
+
+    public function updateTexture():void {
+        texture['needsUpdate'] = true;
+    }
+
+    private function resizeGeometry(widthInPixel:Number, heightInPixel:Number):void {
+        trace("resize", widthInPixel, heightInPixel);
+        threeJsObject['geometry'] = new THREE.PlaneGeometry(widthInPixel * _ratio, heightInPixel * _ratio);
     }
 }
 }

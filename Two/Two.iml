@@ -5,7 +5,7 @@
       <configuration name="Two" pure-as="true" main-class="UIEventExample" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/Two">
         <dependencies target-player="20.0">
           <entries>
-            <entry library-name="asjsc" library-level="application">
+            <entry library-id="c4ee8091-4d07-4ddc-8e67-d29df7e16903">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -28,10 +28,24 @@
       <sourceFolder url="file://$MODULE_DIR$/examples/ThreeJSBox" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/HelloTwo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/UIEventExample" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/examples/UseText" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/UsingTextLine" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/FlashSpriteSheet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/UsingDisplay" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/UsingImageView" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="ApacheFlexJS_0.5.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="asjsc" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="c4ee8091-4d07-4ddc-8e67-d29df7e16903" />
+        <CLASSES>
+          <root url="jar:///opt/flash/ApacheFlexJS_0.5.0/js/libs/js.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="three" level="application" />
   </component>
 </module>

@@ -2,4 +2,4 @@
 
 /opt/flash/ApacheFlexJS_0.5.0/js/bin/asjsc \
     -source-path+=../../LibTwo \
-    UseText.as
+    Main.as

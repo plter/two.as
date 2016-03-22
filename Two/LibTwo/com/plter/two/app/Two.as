@@ -36,8 +36,15 @@ public class Two extends Context {
         _raycast = new THREE.Raycaster();
 
         addListeners();
+        addLight();
 
         render();
+    }
+
+    private function addLight():void {
+        var light:* = new THREE.PointLight(0xffffff, 1, 100);
+        light['position']['z'] = 1;
+        _threeScene.add(light);
     }
 
     public function get domElement():HTMLCanvasElement {
@@ -121,7 +128,7 @@ public class Two extends Context {
 
     private function domElement_eventHandler(e:MouseEvent):void {
 
-        if(_currentScene2D) {
+        if (_currentScene2D) {
             var x:Number = 0, y:Number = 0;
             if (e.layerX) {
                 x = e.layerX;

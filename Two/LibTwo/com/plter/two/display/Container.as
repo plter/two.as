@@ -5,7 +5,7 @@ package com.plter.two.display {
 import com.plter.two.app.Context;
 import com.plter.two.supports.threejs.THREE;
 
-public class Container extends Display {
+public class Container extends Node {
 
     private var _children:Array = [];
 
@@ -13,11 +13,11 @@ public class Container extends Display {
         super(context, new THREE.Object3D());
     }
 
-    public function addChild(display:Display):void {
+    public function addChild(display:Node):void {
         threeJsObject['add'](display.threeJsObject);
     }
 
-    public function removeChild(display:Display):void {
+    public function removeChild(display:Node):void {
         threeJsObject['remove'](display.threeJsObject);
     }
 
@@ -30,7 +30,7 @@ public class Container extends Display {
         var children3D:* = threeJsObject['children'];
         var length:int = children3D['length'];
         for (var i:int = 0; i < length; i++) {
-            _children.push(children3D[i]['displayObject']);
+            _children.push(children3D[i]['node']);
         }
 
         return _children;

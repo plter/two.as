@@ -9,13 +9,13 @@ import com.plter.two.display.TextLine;
 public class MainScene extends Scene {
 
 
-    private var text:TextLine;
+    private var tl:TextLine;
 
     public function MainScene(context:Context) {
         super(context);
 
-        text = new TextLine(context, "Hello World", 30);
-        addChild(text);
+        tl = new TextLine(context, "Hello World", 32);
+        addChild(tl);
     }
 }
 }

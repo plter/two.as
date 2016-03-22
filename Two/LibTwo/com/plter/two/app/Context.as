@@ -2,9 +2,7 @@
  * Created by plter on 3/12/16.
  */
 package com.plter.two.app {
-import org.apache.flex.events.EventDispatcher;
-
-public class Context extends EventDispatcher{
+public class Context{
 
     private var _stage:Stage;
     private var _camera:*;

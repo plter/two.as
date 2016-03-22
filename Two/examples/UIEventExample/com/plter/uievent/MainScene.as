@@ -3,7 +3,7 @@
  */
 package com.plter.uievent {
 import com.plter.two.app.Context;
-import com.plter.two.display.Bitmap;
+import com.plter.two.display.Display;
 import com.plter.two.display.Scene;
 import com.plter.two.supports.threejs.TextureLoader;
 import com.plter.two.supports.threejs.TextureLoaderEvent;
@@ -11,7 +11,7 @@ import com.plter.two.supports.threejs.TextureLoaderEvent;
 public class MainScene extends Scene {
 
 
-    private var img:Bitmap;
+    private var img:Display;
 
     public function MainScene(context:Context) {
         super(context);
@@ -22,7 +22,7 @@ public class MainScene extends Scene {
     }
 
     private function tl_completeHandler(event:TextureLoaderEvent):void {
-        img = new Bitmap(context, event.texture);
+        img = new Display(context, event.texture);
         img.z = -2;
         addChild(img);
     }

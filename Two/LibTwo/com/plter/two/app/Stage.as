@@ -2,9 +2,7 @@
  * Created by plter on 3/12/16.
  */
 package com.plter.two.app {
-import org.apache.flex.events.EventDispatcher;
-
-public class Stage extends EventDispatcher{
+public class Stage{
 
     private var _stageWidth:Number = 550, _stageHeight:Number = 400;
 
