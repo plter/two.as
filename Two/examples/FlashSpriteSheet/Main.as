@@ -5,8 +5,8 @@ package {
 import com.plter.flashspritesheet.FlashSpriteSheetScene;
 import com.plter.two.app.Two;
 
-public class FlashSpriteSheet extends Two{
-    public function FlashSpriteSheet() {
+public class Main extends Two{
+    public function Main() {
         document.body.appendChild(domElement);
         showFps = true;
 

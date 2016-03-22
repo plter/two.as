@@ -3,6 +3,7 @@
  */
 package com.plter.two.display {
 import com.plter.two.app.Context;
+import com.plter.two.tools.MathTool;
 
 public class TextLine extends Display {
 
@@ -76,8 +77,8 @@ public class TextLine extends Display {
         ctx.fillStyle = fillStyle;
         var width:Number = ctx.measureText(text).width;
 
-        var canvasWidth:Number = resetNumber(width);
-        var canvasHeight:Number = resetNumber(fontSize);
+        var canvasWidth:Number = MathTool.resetNumberToNearPower2(width);
+        var canvasHeight:Number = MathTool.resetNumberToNearPower2(fontSize);
         setSizeInPixel(canvasWidth, canvasHeight);
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -90,8 +91,6 @@ public class TextLine extends Display {
         updateTexture();
     }
 
-    private static function resetNumber(value:Number):Number {
-        return Math.pow(2, Math.ceil((Math.log(value) * Math.LOG2E)))
-    }
+
 }
 }

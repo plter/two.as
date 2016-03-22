@@ -105,7 +105,6 @@ public class Display extends Node {
     }
 
     private function resizeGeometry(widthInPixel:Number, heightInPixel:Number):void {
-        trace("resize", widthInPixel, heightInPixel);
         threeJsObject['geometry'] = new THREE.PlaneGeometry(widthInPixel * _ratio, heightInPixel * _ratio);
     }
 }

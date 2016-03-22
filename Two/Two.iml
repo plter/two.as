@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="Two">
     <configurations>
-      <configuration name="Two" pure-as="true" main-class="UIEventExample" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/Two">
+      <configuration name="Two" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/Two">
         <dependencies target-player="20.0">
           <entries>
             <entry library-id="c4ee8091-4d07-4ddc-8e67-d29df7e16903">

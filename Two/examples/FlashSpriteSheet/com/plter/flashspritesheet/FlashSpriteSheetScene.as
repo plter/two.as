@@ -11,8 +11,13 @@ public class FlashSpriteSheetScene extends Scene {
     public function FlashSpriteSheetScene(context:Context) {
         super(context);
 
-        var ss:SpriteSheet = new SpriteSheet(context, "Anim.json");
+        var ss:SpriteSheet = new SpriteSheet(context, "Anim.json", "Anim.png", 50);
         ss.load();
+        ss.onLoad.add(function (event:*, target:*):void {
+            ss.play();
+        });
+
+        addChild(ss);
     }
 }
 }

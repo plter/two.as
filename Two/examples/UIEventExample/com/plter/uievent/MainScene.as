@@ -3,27 +3,20 @@
  */
 package com.plter.uievent {
 import com.plter.two.app.Context;
-import com.plter.two.display.Display;
+import com.plter.two.display.ImageView;
 import com.plter.two.display.Scene;
-import com.plter.two.supports.threejs.TextureLoader;
-import com.plter.two.supports.threejs.TextureLoaderEvent;
 
 public class MainScene extends Scene {
 
 
-    private var img:Display;
+    private var img:ImageView;
 
     public function MainScene(context:Context) {
         super(context);
 
-        var tl:TextureLoader = new TextureLoader();
-        tl.addEventListener(TextureLoaderEvent.COMPLETE, tl_completeHandler);
-        tl.load("Image.png");
-    }
-
-    private function tl_completeHandler(event:TextureLoaderEvent):void {
-        img = new Display(context, event.texture);
+        img = new ImageView(context);
         img.z = -2;
+        img.load("Image.png");
         addChild(img);
     }
 
