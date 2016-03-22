@@ -12,7 +12,7 @@ public class TextLine extends Display {
     private var _fontFamily:String;
     private var _fillStyle:String;
 
-    public function TextLine(context:Context, text:String = "Text", fontSize:uint = 12, fillStyle:String = "#00ffff", fontFamily:String = "Courier") {
+    public function TextLine(context:Context, text:String = "Text", fontSize:uint = 12, fillStyle:String = "#000000", fontFamily:String = "Courier") {
 
         super(context);
 

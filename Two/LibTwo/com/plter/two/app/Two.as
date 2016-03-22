@@ -27,7 +27,9 @@ public class Two extends Context {
         camera = new THREE.PerspectiveCamera(90, width / height, 0.01, 100);
         camera['position']['z'] = 1;
 
-        _renderer = new THREE.WebGLRenderer();
+        var rendererParams:* = {};
+        rendererParams['alpha'] = true;
+        _renderer = new THREE.WebGLRenderer(rendererParams);
         _renderer['setSize'](width, height);
 
         _threeScene = new THREE.Scene();
@@ -91,7 +93,7 @@ public class Two extends Context {
             fpsElement.style.position = 'absolute';
             fpsElement.style.left = '0px';
             fpsElement.style.top = '0px';
-            fpsElement.style.color = '#00ccff';
+            fpsElement.style.color = '#000000';
         }
         return _fpsElement;
     }
