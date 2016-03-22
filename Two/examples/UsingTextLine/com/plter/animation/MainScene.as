@@ -1,7 +1,7 @@
 /**
  * Created by plter on 3/15/16.
  */
-package com.plter.usetext {
+package com.plter.animation {
 import com.plter.two.app.Context;
 import com.plter.two.display.Scene;
 import com.plter.two.display.TextLine;

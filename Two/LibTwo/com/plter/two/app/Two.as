@@ -116,6 +116,7 @@ public class Two extends Context {
         //run update method of scene before render
         if (_currentScene2D) {
             _currentScene2D.update(_currentDeltaTime);
+            _currentScene2D.onUpdate.dispatch(null, _currentScene2D);
         }
         _renderer['render'](_threeScene, camera);
 

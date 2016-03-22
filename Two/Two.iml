@@ -32,6 +32,7 @@
       <sourceFolder url="file://$MODULE_DIR$/examples/FlashSpriteSheet" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/UsingDisplay" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/UsingImageView" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/AnimationExample" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="ApacheFlexJS_0.5.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
