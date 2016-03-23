@@ -120,6 +120,31 @@ public class Node {
         _name = value;
     }
 
+    public function get visible():Boolean {
+        return object3D['visible'];
+    }
+
+    public function set visible(b:Boolean):void {
+        object3D['visible'] = b;
+    }
+
+    public function get transparent():Boolean {
+        return object3D['material']['transparent'];
+    }
+
+    public function set transparent(b:Boolean):void {
+        object3D['material']['transparent'] = b;
+    }
+
+    public function get opacity():Number {
+        return object3D['material']['opacity'];
+    }
+
+    public function set opacity(value:Number):void {
+        object3D['material']['opacity'] = value;
+    }
+
+
 //Hit test tool
     private static var _raycast:* = new THREE.Raycaster();
     private static var _point:* = new THREE.Vector2();
