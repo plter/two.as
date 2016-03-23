@@ -5,14 +5,14 @@ package com.plter.two.display {
 import com.plter.two.app.Context;
 import com.plter.two.tools.MathTool;
 
-public class TextLine extends Display {
+public class Label extends Display {
 
     private var _text:String;
     private var _fontSize:uint;
     private var _fontFamily:String;
     private var _fillStyle:String;
 
-    public function TextLine(context:Context, text:String = "Text", fontSize:uint = 12, fillStyle:String = "#000000", fontFamily:String = "Courier") {
+    public function Label(context:Context, text:String = "Text", fontSize:uint = 12, fillStyle:String = "#000000", fontFamily:String = "Courier") {
 
         super(context);
 
@@ -75,18 +75,22 @@ public class TextLine extends Display {
 
         ctx.font = font;
         ctx.fillStyle = fillStyle;
-        var width:Number = ctx.measureText(text).width;
+        var textWidth:Number = ctx.measureText(text).width;
+        var textHeight:Number = fontSize;
 
-        var canvasWidth:Number = MathTool.resetNumberToNearPower2(width);
-        var canvasHeight:Number = MathTool.resetNumberToNearPower2(fontSize);
-        setSizeInPixel(canvasWidth, canvasHeight);
+        var power2Width:Number = MathTool.resetNumberToNearPower2(textWidth);
+        var power2Height:Number = MathTool.resetNumberToNearPower2(textHeight);
+        setCanvasSizeAndGeometrySizeInPixel(power2Width, power2Height, textWidth, textHeight);
 
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        ctx.clearRect(0, 0, power2Width, power2Height);
 
+        ctx.save();
         ctx.font = font;
         ctx.fillStyle = fillStyle;
 
-        ctx.fillText(text, 0, canvasHeight);
+        ctx.scale(power2Width / textWidth, power2Height / textHeight);
+        ctx.fillText(text, 0, textHeight);
+        ctx.restore();
 
         updateTexture();
     }

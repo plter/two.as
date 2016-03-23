@@ -1,7 +1,7 @@
 /**
  * Created by plter on 3/22/16.
  */
-package com.plter.usingdisplay {
+package com.plter.usingloader {
 import com.plter.two.app.Context;
 import com.plter.two.display.Display;
 import com.plter.two.display.Scene;

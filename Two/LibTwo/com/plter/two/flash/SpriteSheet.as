@@ -4,9 +4,7 @@
 package com.plter.two.flash {
 import com.plter.two.app.Context;
 import com.plter.two.display.Display;
-import com.plter.two.display.Node;
 import com.plter.two.events.EventListenerList;
-import com.plter.two.supports.threejs.THREE;
 import com.plter.two.tools.MathTool;
 
 public class SpriteSheet extends Display {
@@ -87,15 +85,21 @@ public class SpriteSheet extends Display {
         var firstFrame:* = _frames[0];
         _spriteSheetWidth = firstFrame['sourceSize']['w'];
         _spriteSheetHeight = firstFrame['sourceSize']['h'];
+        var power2Width:Number = MathTool.resetNumberToNearPower2(_spriteSheetWidth);
+        var power2Height:Number = MathTool.resetNumberToNearPower2(_spriteSheetHeight);
 
-        setSizeInPixel(MathTool.resetNumberToNearPower2(_spriteSheetWidth), MathTool.resetNumberToNearPower2(_spriteSheetHeight));
+        setCanvasSizeAndGeometrySizeInPixel(power2Width, power2Height, _spriteSheetWidth, _spriteSheetHeight);
     }
 
     private function showFrame(index:uint):void {
         var frameData:* = _frames[index];
         var srcRect:* = frameData['frame'];
-        context2d.clearRect(0, 0, widthInPixel, heightInPixel);
+        context2d.clearRect(0, 0, canvasWidthInPixel, canvasHeightInPixel);
+
+        context2d.save();
+        context2d.scale(canvasWidthInPixel / geometryWidthInPixel, canvasHeightInPixel / geometryHeightInPixel);
         context2d.drawImage(_image, srcRect['x'], srcRect['y'], srcRect['w'] - 1, srcRect['h'] - 1, 0, 0, srcRect['w'], srcRect['h']);
+        context2d.restore();
         updateTexture();
 
         if (frameData['script']) {

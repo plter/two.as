@@ -21,8 +21,8 @@ public class Two extends Context {
 
     public function Two(width:Number = 550, height:Number = 400) {
         //init stage properties
-        stage.setStageWidth(width);
-        stage.setStageHeight(height);
+        stage.stageWidth = width;
+        stage.stageHeight = height;
 
         camera = new THREE.PerspectiveCamera(90, width / height, 0.01, 100);
         camera['position']['z'] = 1;
@@ -55,17 +55,17 @@ public class Two extends Context {
 
     public function setSize(width:Number, height:Number):void {
         _renderer['setSize'](width, height);
-        stage.setStageWidth(width);
-        stage.setStageHeight(height);
+        stage.stageWidth = width;
+        stage.stageHeight = height;
     }
 
     public function presentScene(scene:Scene):void {
         if (_currentScene2D) {
-            _threeScene['remove'](_currentScene2D.threeJsObject);
+            _threeScene['remove'](_currentScene2D.object3D);
         }
 
         _currentScene2D = scene;
-        _threeScene['add'](_currentScene2D.threeJsObject);
+        _threeScene['add'](_currentScene2D.object3D);
     }
 
 

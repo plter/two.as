@@ -7,18 +7,20 @@ import com.plter.two.supports.threejs.THREE;
 
 public class Node {
 
-    private var _threeJsObject:*;
+    private var _object3D:*;
     private var _context:Context;
+    private var _ratio:Number;
 
     public function Node(context:Context, object3D:*) {
         _context = context;
-        _threeJsObject = object3D;
+        _object3D = object3D;
 
-        _threeJsObject['node'] = this;
+        _object3D['node'] = this;
+        _ratio = context.stage.spaceRatio;
     }
 
-    public function get threeJsObject():* {
-        return _threeJsObject;
+    public function get object3D():* {
+        return _object3D;
     }
 
     public function get context():Context {
@@ -78,11 +80,35 @@ public class Node {
     }
 
     private function get position():* {
-        return threeJsObject['position'];
+        return object3D['position'];
     }
 
     private function get rotation():* {
-        return threeJsObject['rotation'];
+        return object3D['rotation'];
+    }
+
+    public function get xInPixel():Number {
+        return x / _ratio;
+    }
+
+    public function get yInPixel():Number {
+        return y / _ratio;
+    }
+
+    public function set xInPixel(value:Number):void {
+        x = value * _ratio;
+    }
+
+    public function set yInPixel(value:Number):void {
+        y = value * _ratio;
+    }
+
+    public function set zInPixel(value:Number):void {
+        z = value * _ratio;
+    }
+
+    public function get zInPixel():Number {
+        return z / _ratio;
     }
 
 
@@ -95,7 +121,7 @@ public class Node {
         _point['y'] = y;
 
         _raycast['setFromCamera'](_point, context.camera);
-        return _raycast['intersectObject'](display.threeJsObject)['length'] > 0;
+        return _raycast['intersectObject'](display.object3D)['length'] > 0;
     }
 }
 }

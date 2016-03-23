@@ -1,15 +1,15 @@
 /**
- * Created by plter on 3/15/16.
+ * Created by plter on 3/23/16.
  */
 package {
 import com.plter.two.app.Two;
-import com.plter.animation.MainScene;
+import com.plter.usingpicture.MainScene;
 
 public class Main extends Two {
     public function Main() {
+        showFps = true;
         document.body.appendChild(domElement);
 
-        showFps = true;
         presentScene(new MainScene(this));
     }
 }

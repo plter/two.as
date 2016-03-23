@@ -5,19 +5,19 @@ package com.plter.animation {
 import com.plter.two.anim.PropertyAnim;
 import com.plter.two.app.Context;
 import com.plter.two.display.Scene;
-import com.plter.two.display.TextLine;
+import com.plter.two.display.Label;
 
 public class MainScene extends Scene {
 
-    private var tl:TextLine;
+    private var tl:Label;
 
     public function MainScene(context:Context) {
         super(context);
 
-        tl = new TextLine(context, "Move this text", 16);
+        tl = new Label(context, "Move this text", 32);
         addChild(tl);
 
-        new PropertyAnim(this, tl, "x", 0, 1, 120, function (target:PropertyAnim):void {
+        new PropertyAnim(this, tl, "x", -1, 1, 120, function (target:PropertyAnim):void {
             target.reverse().start();
         }).start();
     }
