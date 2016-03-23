@@ -16,7 +16,7 @@ public class MainScene extends Scene {
         img = new Loader(context);
         addChild(img);
         img.load("Image.jpg");
-
+        
         img.z = -1;
     }
 }

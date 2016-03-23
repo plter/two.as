@@ -80,12 +80,32 @@ public class Node {
         rotation['z'] = value;
     }
 
+    public function get scaleX():Number {
+        return scale['x'];
+    }
+
+    public function set scaleX(value:Number):void {
+        scale['x'] = value;
+    }
+
+    public function get scaleY():Number {
+        return scale['y'];
+    }
+
+    public function set scaleY(value:Number):void {
+        scale['y'] = value;
+    }
+
     private function get position():* {
         return object3D['position'];
     }
 
     private function get rotation():* {
         return object3D['rotation'];
+    }
+
+    private function get scale():* {
+        return object3D['scale'];
     }
 
     public function get xInPixel():Number {
