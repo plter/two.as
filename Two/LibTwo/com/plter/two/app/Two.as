@@ -126,7 +126,26 @@ public class Two extends Context {
     }
 
     private function addListeners():void {
+        //MouseEvent
         domElement.addEventListener("click", domElement_eventHandler, false);
+        domElement.addEventListener("contextmenu", domElement_eventHandler, false);
+        domElement.addEventListener("dblclick", domElement_eventHandler, false);
+        domElement.addEventListener("mousedown", domElement_eventHandler, false);
+        domElement.addEventListener("mouseenter", domElement_eventHandler, false);
+        domElement.addEventListener("mouseleave", domElement_eventHandler, false);
+        domElement.addEventListener("mousemove", domElement_eventHandler, false);
+        domElement.addEventListener("mouseout", domElement_eventHandler, false);
+        domElement.addEventListener("mouseover", domElement_eventHandler, false);
+        domElement.addEventListener("mouseup", domElement_eventHandler, false);
+        domElement.addEventListener("show", domElement_eventHandler, false);
+
+        //TouchEvent
+        domElement.addEventListener("touchcancel", domElement_eventHandler, false);
+        domElement.addEventListener("touchend", domElement_eventHandler, false);
+        domElement.addEventListener("touchenter", domElement_eventHandler, false);
+        domElement.addEventListener("touchleave", domElement_eventHandler, false);
+        domElement.addEventListener("touchmove", domElement_eventHandler, false);
+        domElement.addEventListener("touchstart", domElement_eventHandler, false);
     }
 
     private function domElement_eventHandler(e:MouseEvent):void {
@@ -149,7 +168,7 @@ public class Two extends Context {
             x = (x / stage.stageWidth) * 2 - 1;
             y = 1 - (y / stage.stageHeight) * 2;
 
-            _currentScene2D.onUiEvent(e.type, x, y, e);
+            _currentScene2D.internal_onUiEvent(e.type, x, y, e);
         }
     }
 }

@@ -10,6 +10,7 @@ public class Node {
     private var _object3D:*;
     private var _context:Context;
     private var _ratio:Number;
+    private var _name:String = null;
 
     public function Node(context:Context, object3D:*) {
         _context = context;
@@ -111,8 +112,15 @@ public class Node {
         return z / _ratio;
     }
 
+    public function get name():String {
+        return _name;
+    }
 
-    //Hit test tool
+    public function set name(value:String):void {
+        _name = value;
+    }
+
+//Hit test tool
     private static var _raycast:* = new THREE.Raycaster();
     private static var _point:* = new THREE.Vector2();
 

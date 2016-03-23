@@ -3,29 +3,24 @@
  */
 package com.plter.uievent {
 import com.plter.two.app.Context;
-import com.plter.two.display.Loader;
+import com.plter.two.display.Label;
 import com.plter.two.display.Scene;
 
 public class MainScene extends Scene {
 
 
-    private var img:Loader;
+    private var l:Label;
 
     public function MainScene(context:Context) {
         super(context);
 
-        img = new Loader(context);
-        img.z = -2;
-        img.load("Image.png");
-        addChild(img);
+        l = new Label(context, "Click me", 32);
+        addChild(l);
     }
 
-
-    override public function onUiEvent(type:String, x:Number, y:Number, e:MouseEvent):void {
-        if (img) {
-            if (type == 'click' && img.hitTest(x, y)) {
-                alert("Image clicked");
-            }
+    override public function onClick(eventType:String, x:Number, y:Number, e:MouseEvent):void {
+        if (l.hitTest(x, y)) {
+            alert("Image clicked");
         }
     }
 }

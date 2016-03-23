@@ -21,6 +21,24 @@ public class Container extends Node {
         object3D['remove'](display.object3D);
     }
 
+    public function childAt(index:uint):Node {
+        return object3D['children'][index]['node'];
+    }
+
+    public function childByName(name:String):Node {
+        var children3D:* = object3D['children'];
+        var length:int = children3D['length'];
+        var node:Node;
+
+        for (var i:int = 0; i < length; i++) {
+            node = children3D[i]['node'];
+            if (node.name && node.name == name) {
+                return node;
+            }
+        }
+        return null;
+    }
+
 
     public function get children():Array {
         while (_children.length) {
