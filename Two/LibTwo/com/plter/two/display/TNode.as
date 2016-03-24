@@ -5,16 +5,18 @@ package com.plter.two.display {
 import com.plter.two.app.Context;
 import com.plter.two.supports.threejs.THREE;
 
-public class Node {
+public class TNode {
 
     private var _object3D:*;
     private var _context:Context;
     private var _ratio:Number;
     private var _name:String = null;
+    private var _box:*;
 
-    public function Node(context:Context, object3D:*) {
+    public function TNode(context:Context, object3D:*) {
         _context = context;
         _object3D = object3D;
+        _box = new THREE.Box3();
 
         _object3D['node'] = this;
         _ratio = context.stage.spaceRatio;
@@ -28,7 +30,7 @@ public class Node {
         return _context;
     }
 
-    public function hitTest(pointX:Number, pointY:Number):Boolean {
+    public function hitTestPoint(pointX:Number, pointY:Number):Boolean {
         return displayHitTestPoint(pointX, pointY, this, context);
     }
 
@@ -164,12 +166,23 @@ public class Node {
         object3D['material']['opacity'] = value;
     }
 
+    /**
+     * Get three js box3
+     */
+    public function get box():* {
+        return _box['setFromObject'](object3D);
+    }
+
+    public function hitTestObject(node:TNode):Boolean {
+        return box['intersectsBox'](node.box);
+    }
+
 
 //Hit test tool
     private static var _raycast:* = new THREE.Raycaster();
     private static var _point:* = new THREE.Vector2();
 
-    private static function displayHitTestPoint(x:Number, y:Number, display:Node, context:Context):Boolean {
+    private static function displayHitTestPoint(x:Number, y:Number, display:TNode, context:Context):Boolean {
         _point['x'] = x;
         _point['y'] = y;
 

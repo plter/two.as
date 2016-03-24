@@ -19,7 +19,7 @@ public class MainScene extends Scene {
     }
 
     override public function onClick(eventType:String, x:Number, y:Number, e:MouseEvent):void {
-        if (l.hitTest(x, y)) {
+        if (l.hitTestPoint(x, y)) {
             alert("Image clicked");
         }
     }

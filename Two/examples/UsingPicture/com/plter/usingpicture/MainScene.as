@@ -23,7 +23,7 @@ public class MainScene extends Scene {
             for (var i:int = 0; i < col; i++) {
                 for (var j:int = 0; j < row; j++) {
                     pic = new Picture(context, img, picWidth * i, picHeight * j, picWidth, picHeight);
-                    pic.xInPixel = (picWidth + 2) * i;
+                    pic.xInPixel = (picWidth + 2) * i - 200;
                     pic.yInPixel = (picHeight + 2) * (row - j) - 100;
                     addChild(pic);
                 }

@@ -21,5 +21,6 @@ public class THREE {
     public static const Color:Class = three['Color'];
     public static const Vector2:Class = three['Vector2'];
     public static const Raycaster:Class = three['Raycaster'];
+    public static const Box3:Class = three['Box3'];
 }
 }
