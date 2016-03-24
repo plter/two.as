@@ -2,12 +2,12 @@
  * Created by plter on 3/17/16.
  */
 package com.plter.two.events {
-public class Event {
+public class TEvent {
 
     private var _name:String;
     private var _data:*;
 
-    public function Event(name:String, data:*) {
+    public function TEvent(name:String, data:*) {
         _name = name;
         _data = data;
     }

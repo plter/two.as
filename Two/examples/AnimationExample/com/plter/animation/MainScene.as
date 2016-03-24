@@ -17,7 +17,7 @@ public class MainScene extends Scene {
         tl = new Label(context, "Move this text", 32);
         addChild(tl);
 
-        new PropertyAnim(this, tl, "x", -1, 1, 120, function (target:PropertyAnim):void {
+        new PropertyAnim(this, tl, "x", -1, 1, 120, function (e:*, target:PropertyAnim):void {
             target.reverse().start();
         }).start();
     }

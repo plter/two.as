@@ -5,19 +5,19 @@ package com.plter.two.flash {
 import com.plter.two.app.Context;
 import com.plter.two.display.Display;
 import com.plter.two.events.EventListenerList;
+import com.plter.two.net.Connection;
+import com.plter.two.net.ConnectionEvent;
 import com.plter.two.tools.MathTool;
 
 public class SpriteSheet extends Display {
 
 
     private var _spriteSheetJsonUrl:String;
-    private var _xhr:XMLHttpRequest;
     private var _onJsonLoadError:EventListenerList = new EventListenerList();
     private var _onTextureLoadError:EventListenerList = new EventListenerList();
     private var _onLoad:EventListenerList = new EventListenerList();
     private var _frames:Array;
     private var _textureUrl:String;
-    private var _json:*;
     private var _spriteSheetWidth:Number = 100;
     private var _spriteSheetHeight:Number = 100;
     private var _image:Image;
@@ -26,6 +26,7 @@ public class SpriteSheet extends Display {
     private var _intervalId:Number;
     private var _currentFrameIndex:uint = 0;
     private var _repeat:Boolean = true;
+    private var _conn:Connection;
 
     /**
      *
@@ -41,25 +42,23 @@ public class SpriteSheet extends Display {
         _textureUrl = textureUrl;
         _frameDelay = frameDelay;
 
-        _xhr = new XMLHttpRequest();
-        _xhr.onreadystatechange = _xhr_readyChangeHandler;
+        _conn = new Connection();
+        _conn.onSuccess(successHandler).onError(errorHandler);
     }
 
-    private function _xhr_readyChangeHandler():void {
-        if (_xhr.readyState == 4) {
-            if (_xhr.status == 200) {
+    private function errorHandler(e:*, target:Connection):void {
+        onJsonLoadError.dispatch(null, this);
+    }
 
-                _json = JSON.parse(_xhr.responseText);
+    private function successHandler(e:ConnectionEvent, target:Connection):void {
 
-                if (_json) {
-                    _frames = _json['frames'];
-                    loadTexture();
-                } else {
-                    onJsonLoadError.dispatch(null, this);
-                }
-            } else {
-                onJsonLoadError.dispatch(null, this);
-            }
+        var _json:* = JSON.parse(e.data);
+
+        if (_json) {
+            _frames = _json['frames'];
+            loadTexture();
+        } else {
+            onJsonLoadError.dispatch(null, this);
         }
     }
 
@@ -128,8 +127,7 @@ public class SpriteSheet extends Display {
     }
 
     public function load():void {
-        _xhr.open("GET", spriteSheetJsonUrl);
-        _xhr.send();
+        _conn.send(spriteSheetJsonUrl);
     }
 
 

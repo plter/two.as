@@ -7,7 +7,7 @@ import com.plter.two.display.Scene;
 public class PropertyAnim {
 
 
-    private var _target:*;
+    private var _object:*;
     private var _property:String;
     private var _fromValue:Number;
     private var _toValue:Number;
@@ -17,9 +17,9 @@ public class PropertyAnim {
     private var _speed:Number;
     private var _distance:Number;
 
-    public function PropertyAnim(scene:Scene, target:*, property:String, fromValue:Number, toValue:Number, frames:uint, completeHandler:Function = null) {
+    public function PropertyAnim(scene:Scene, object:*, property:String, fromValue:Number, toValue:Number, frames:uint, completeHandler:Function = null) {
         _scene = scene;
-        _target = target;
+        _object = object;
         _property = property;
         _frames = frames;
         setFromAndTo(fromValue, toValue);
@@ -27,12 +27,12 @@ public class PropertyAnim {
     }
 
     public function start():void {
-        target[property] = _fromValue;
+        object[property] = _fromValue;
         scene.onUpdate.add(updateHandler);
     }
 
-    public function get target():* {
-        return _target;
+    public function get object():* {
+        return _object;
     }
 
     public function get property():String {
@@ -78,14 +78,14 @@ public class PropertyAnim {
 
     private function updateHandler():void {
 
-        target[property] += _speed;
+        object[property] += _speed;
 
-        if (Math.abs(target[property] - fromValue) > _distance) {
+        if (Math.abs(object[property] - fromValue) > _distance) {
             scene.onUpdate.remove(updateHandler);
-            target[property] = toValue;
+            object[property] = toValue;
 
             if (_completeHandler) {
-                _completeHandler(this);
+                _completeHandler(null, this);
             }
         }
     }

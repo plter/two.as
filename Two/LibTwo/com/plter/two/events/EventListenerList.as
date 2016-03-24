@@ -24,7 +24,7 @@ public class EventListenerList {
         }
     }
 
-    public function dispatch(event:com.plter.two.events.Event = null, target:* = null):Boolean {
+    public function dispatch(event:com.plter.two.events.TEvent = null, target:* = null):Boolean {
         var suc:Boolean = true;
 
         for (var i:int = 0; i < _els.length; i++) {

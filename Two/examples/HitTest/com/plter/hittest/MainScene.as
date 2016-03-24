@@ -34,7 +34,7 @@ public class MainScene extends Scene {
         _result.y = -0.5;
         addChild(_result);
 
-        new PropertyAnim(this, _label, "x", -1, 1, 480, function (anim:PropertyAnim):void {
+        new PropertyAnim(this, _label, "x", -1, 1, 480, function (e:*, anim:PropertyAnim):void {
             anim.reverse().start();
         }).start();
 

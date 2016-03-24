@@ -38,7 +38,7 @@ public class Two extends Context {
         _raycast = new THREE.Raycaster();
 
         addListeners();
-        addLight();
+//        addLight();
 
         render();
     }
