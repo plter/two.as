@@ -39,5 +39,21 @@ public class Stage {
     public function get aspectRatio():Number {
         return _aspectRatio;
     }
+
+    public function get top():Number {
+        return 1;
+    }
+
+    public function get bottom():Number {
+        return -1;
+    }
+
+    public function get left():Number {
+        return bottom * aspectRatio;
+    }
+
+    public function get height():Number {
+        return top * aspectRatio;
+    }
 }
 }
