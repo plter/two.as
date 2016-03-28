@@ -4,32 +4,32 @@
 package com.plter.two.app {
 public class Stage {
 
-    private var _stageWidth:Number = 550, _stageHeight:Number = 400;
+    private var _stageWidthInPixel:Number = 550, _stageHeightInPixel:Number = 400;
     private var _spaceRatio:Number = 1;
     private var _aspectRatio:Number = 1;
 
     public function Stage() {
     }
 
-    public function set stageWidth(v:Number):void {
-        _stageWidth = v;
+    public function set stageWidthInPixel(v:Number):void {
+        _stageWidthInPixel = v;
 
-        _aspectRatio = _stageWidth / _stageHeight;
+        _aspectRatio = _stageWidthInPixel / _stageHeightInPixel;
     }
 
-    public function set stageHeight(v:Number):void {
-        _stageHeight = v;
+    public function set stageHeightInPixel(v:Number):void {
+        _stageHeightInPixel = v;
 
-        _spaceRatio = 2 / _stageHeight;
-        _aspectRatio = _stageWidth / _stageHeight;
+        _spaceRatio = 2 / _stageHeightInPixel;
+        _aspectRatio = _stageWidthInPixel / _stageHeightInPixel;
     }
 
-    public function get stageWidth():Number {
-        return _stageWidth;
+    public function get stageWidthInPixel():Number {
+        return _stageWidthInPixel;
     }
 
-    public function get stageHeight():Number {
-        return _stageHeight;
+    public function get stageHeightInPixel():Number {
+        return _stageHeightInPixel;
     }
 
     public function get spaceRatio():Number {

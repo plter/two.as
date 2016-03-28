@@ -3,7 +3,6 @@
  */
 package com.plter.two.app {
 import com.plter.two.display.Scene;
-import com.plter.two.supports.js.Date;
 import com.plter.two.supports.threejs.THREE;
 
 public class Two extends Context {
@@ -14,15 +13,19 @@ public class Two extends Context {
     private var _showFps:Boolean = false;
     private var _currentFps:Number = 0;
     private var _fpsElement:HTMLDivElement;
-    private var _lastTime:uint = 0, _currentTime:uint = 0;
     private var _frames:uint = 0;
     private var _currentDeltaTime:uint = 0;
     private var _raycast:*;
+    private var _clock:*;
 
     public function Two(width:Number = 550, height:Number = 400) {
+
+        //init the clock
+        _clock = new THREE.Clock();
+
         //init stage properties
-        stage.stageWidth = width;
-        stage.stageHeight = height;
+        stage.stageWidthInPixel = width;
+        stage.stageHeightInPixel = height;
 
         camera = new THREE.PerspectiveCamera(90, width / height, 0.01, 100);
         camera['position']['z'] = 1;
@@ -55,8 +58,8 @@ public class Two extends Context {
 
     public function setSize(width:Number, height:Number):void {
         _renderer['setSize'](width, height);
-        stage.stageWidth = width;
-        stage.stageHeight = height;
+        stage.stageWidthInPixel = width;
+        stage.stageHeightInPixel = height;
     }
 
     public function presentScene(scene:Scene):void {
@@ -101,12 +104,8 @@ public class Two extends Context {
     private function render():void {
 
         //calculate the fps
-        _currentTime = com.plter.two.supports.js.Date.now();
-        if (_lastTime > 0) {
-            _currentDeltaTime = _currentTime - _lastTime;
-        }
-        _lastTime = _currentTime;
-        _currentFps = 1000 / _currentDeltaTime;
+        _currentDeltaTime = _clock['getDelta']();
+        _currentFps = 1 / _currentDeltaTime;
         if (showFps) {
             if (_frames % 60 == 0) {
                 fpsElement.innerHTML = _currentFps.toFixed() + "fps";
@@ -165,8 +164,8 @@ public class Two extends Context {
                 y = e.offsetY;
             }
 
-            x = (x / stage.stageWidth) * 2 - 1;
-            y = 1 - (y / stage.stageHeight) * 2;
+            x = (x / stage.stageWidthInPixel) * 2 - 1;
+            y = 1 - (y / stage.stageHeightInPixel) * 2;
 
             _currentScene2D.internal_onUiEvent(e.type, x, y, e);
         }

@@ -14,7 +14,6 @@ public class THREE {
     public static const Mesh:Class = three['Mesh'];
     public static const Object3D:Class = three['Object3D'];
     public static const DoubleSide:* = three['DoubleSide'];
-    public static const TextureLoader:Class = three['TextureLoader'];
     public static const Texture:Class = three['Texture'];
     public static const PlaneGeometry:Class = three['PlaneGeometry'];
     public static const MeshBasicMaterial:Class = three['MeshBasicMaterial'];
@@ -22,5 +21,6 @@ public class THREE {
     public static const Vector2:Class = three['Vector2'];
     public static const Raycaster:Class = three['Raycaster'];
     public static const Box3:Class = three['Box3'];
+    public static const Clock:Class = three['Clock'];
 }
 }
