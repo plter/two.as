@@ -187,7 +187,8 @@ package com.plter.two.display {
             _point['y'] = y;
 
             _raycast['setFromCamera'](_point, context.camera);
-            return _raycast['intersectObject'](display.object3D)['length'] > 0;
+            var result:Array = _raycast['intersectObject'](display.object3D);
+            return result.length > 0;
         }
     }
 }
