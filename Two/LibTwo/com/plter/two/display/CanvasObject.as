@@ -14,17 +14,15 @@ package com.plter.two.display {
             _ratio = context.stage.spaceRatio;
 
             _canvas = canvas;
+            _canvas.style.backgroundColor = "rgba(0,0,0,0)";
             _geometryWidthInPixel = canvas.width;
             _geometryHeightInPixel = canvas.height;
             _context2d = _canvas.getContext("2d") as CanvasRenderingContext2D;
 
-            _texture = new THREE.Texture(_canvas);
+            _texture = new THREE.CanvasTexture(_canvas);
             updateTexture();
 
-            var matParams:* = {};
-            matParams['side'] = THREE.DoubleSide;
-            matParams['map'] = _texture;
-            var mat:* = new THREE.MeshBasicMaterial(matParams);
+            var mat:* = new THREE.MeshBasicMaterial({"side": THREE.DoubleSide, "map": _texture, "transparent": true});
 
             var object3D:* = new THREE.Mesh(createGeometry(geometryWidth, geometryHeight), mat);
             super(context, object3D);
@@ -71,9 +69,15 @@ package com.plter.two.display {
             canvas.height = height;
         }
 
+        [Deprecated]
         public function setCanvasSizeAndGeometrySizeInPixel(canvasWidth:Number, canvasHeight:Number, geometryWidth:Number, geometryHeight:Number):void {
             setCanvasSizeInPixel(canvasWidth, canvasHeight);
             setGeometrySizeInPixel(geometryWidth, geometryHeight);
+        }
+
+        public function setSizeInPixel(widthInPixel:Number, heightInPixel:Number):void {
+            setCanvasSizeInPixel(widthInPixel, heightInPixel);
+            setGeometrySizeInPixel(widthInPixel, heightInPixel);
         }
 
         public function setGeometrySizeInPixel(widthInPixel:Number, heightInPixel:Number):void {

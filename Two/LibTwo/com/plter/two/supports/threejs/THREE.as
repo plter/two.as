@@ -16,8 +16,10 @@ package com.plter.two.supports.threejs {
         public static const Object3D:Class = three['Object3D'];
         public static const DoubleSide:* = three['DoubleSide'];
         public static const Texture:Class = three['Texture'];
+        public static const CanvasTexture:Class = three['CanvasTexture'];
         public static const PlaneGeometry:Class = three['PlaneGeometry'];
         public static const MeshBasicMaterial:Class = three['MeshBasicMaterial'];
+        public static const MeshPhongMaterial:Class = three['MeshPhongMaterial'];
         public static const Color:Class = three['Color'];
         public static const Vector2:Class = three['Vector2'];
         public static const Raycaster:Class = three['Raycaster'];

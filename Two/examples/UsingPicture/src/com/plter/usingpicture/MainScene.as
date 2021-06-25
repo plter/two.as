@@ -29,7 +29,7 @@ public class MainScene extends Scene {
                 }
             }
         };
-        img.src = "image.jpg";
+        img.src = "/image.jpg";
     }
 }
 }

@@ -3,7 +3,6 @@
  */
 package com.plter.two.display {
     import com.plter.two.app.Context;
-    import com.plter.two.supports.threejs.THREE;
 
     public class Display extends CanvasObject {
 

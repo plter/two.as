@@ -1,12 +1,11 @@
 package com.yunp.balls {
-    import com.plter.two.display.CanvasObject;
     import com.plter.two.app.Context;
-    import com.plter.two.display.Display;
+    import com.plter.two.display.CanvasObject;
 
     public class Ball extends CanvasObject {
 
-        private var speedX:Number = Math.random() * 0.002 + 0.001;
-        private var speedY:Number = Math.random() * 0.002 + 0.001;
+        private var speedX:Number = Math.random() * 0.01 + 0.002;
+        private var speedY:Number = Math.random() * 0.01 + 0.002;
 
         public function Ball(context:Context) {
             super(context, ballCanvas);
