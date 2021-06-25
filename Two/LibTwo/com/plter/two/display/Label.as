@@ -3,7 +3,6 @@
  */
 package com.plter.two.display {
 import com.plter.two.app.Context;
-import com.plter.two.tools.MathTool;
 
 public class Label extends Display {
 
@@ -78,17 +77,13 @@ public class Label extends Display {
         var textWidth:Number = ctx.measureText(text).width;
         var textHeight:Number = fontSize;
 
-        var power2Width:Number = MathTool.resetNumberToNearPower2(textWidth);
-        var power2Height:Number = MathTool.resetNumberToNearPower2(textHeight);
-        setCanvasSizeAndGeometrySizeInPixel(power2Width, power2Height, textWidth, textHeight);
+        setSizeInPixel(textWidth,textHeight);
 
-        ctx.clearRect(0, 0, power2Width, power2Height);
+        ctx.clearRect(0, 0, textHeight, textHeight);
 
         ctx.save();
         ctx.font = font;
         ctx.fillStyle = fillStyle;
-
-        ctx.scale(power2Width / textWidth, power2Height / textHeight);
         ctx.fillText(text, 0, textHeight);
         ctx.restore();
 

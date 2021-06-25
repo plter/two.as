@@ -3,7 +3,6 @@
  */
 package com.plter.two.display {
     import com.plter.two.app.Context;
-    import com.plter.two.tools.MathTool;
 
     public class Picture extends Display {
 
