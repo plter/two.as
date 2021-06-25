@@ -4,7 +4,7 @@
 package {
 import com.plter.two.supports.threejs.THREE;
 
-public class ThreeJSBox {
+public class Main {
 
     private var _camera:*;
     private var _renderer:*;
@@ -14,7 +14,7 @@ public class ThreeJSBox {
     private var _light:*;
     private var _cube:*;
 
-    public function ThreeJSBox() {
+    public function Main() {
 
         _camera = new THREE.PerspectiveCamera(90, _width / _height, 0.01, 100);
         _camera['position']['z'] = 2;
@@ -39,7 +39,7 @@ public class ThreeJSBox {
 
         _renderer['render'](_scene, _camera);
 
-        window.requestAnimationFrame(render);
+        requestAnimationFrame(render);
     }
 
     private function addLight():void {

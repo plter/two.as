@@ -1,9 +1,3 @@
-# Two.as
-Two.as is a 2d game engine running in canvas
-
-# HelloWorld  
-
-```ActionScript
 package {
     import com.plter.two.app.Two;
     import com.plter.two.display.Label;
@@ -19,4 +13,3 @@ package {
         }
     }
 }
-```

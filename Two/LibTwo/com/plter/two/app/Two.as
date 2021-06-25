@@ -17,6 +17,7 @@ package com.plter.two.app {
         private var _currentDeltaTime:uint = 0;
         private var _raycast:*;
         private var _clock:*;
+        private var _defaultScene:Scene;
 
         public function Two(width:Number = 550, height:Number = 400) {
             //init stage properties
@@ -36,10 +37,19 @@ package com.plter.two.app {
             //create raycast
             _raycast = new THREE.Raycaster();
 
+
             addListeners();
-//        addLight();
+            //addLight();
 
             render();
+
+            // create default scene
+            _defaultScene = new Scene(this);
+            presentScene(_defaultScene);
+        }
+
+        public function get defaultScene():Scene {
+            return _defaultScene;
         }
 
         private function addLight():void {
