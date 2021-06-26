@@ -18,17 +18,16 @@ package com.plter.two.app {
         private var _clock:*;
         private var _defaultScene:Scene;
 
-        public function Two(width:Number = 550, height:Number = 400) {
+        public function Two(width:Number = 550, height:Number = 400, fov:Number = 75) {
             //init stage properties
             stage.stageWidthInPixel = width;
             stage.stageHeightInPixel = height;
 
-            camera = new THREE.PerspectiveCamera(90, width / height, 0.01, 100);
-            camera['position']['z'] = 1;
+            camera = new THREE.PerspectiveCamera(fov, width / height, 0.01, 100);
+            var d:Number = 1 / Math.tan(fov / 180 * Math.PI / 2);
+            camera['position']['z'] = d;
 
-            var rendererParams:* = {};
-            rendererParams['alpha'] = true;
-            _renderer = new THREE.WebGLRenderer(rendererParams);
+            _renderer = new THREE.WebGLRenderer({'alpha': true});
             _renderer['setSize'](width, height);
             _renderer['setPixelRatio'](window.devicePixelRatio);
 
