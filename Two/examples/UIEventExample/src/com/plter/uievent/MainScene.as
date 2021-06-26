@@ -5,8 +5,6 @@ package com.plter.uievent {
     import com.plter.two.app.Context;
     import com.plter.two.display.Label;
     import com.plter.two.display.Scene;
-    import com.plter.two.supports.threejs.THREE;
-    import com.plter.two.display.TNode;
 
     public class MainScene extends Scene {
 
