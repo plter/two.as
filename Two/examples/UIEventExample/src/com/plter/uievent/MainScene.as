@@ -5,6 +5,8 @@ package com.plter.uievent {
     import com.plter.two.app.Context;
     import com.plter.two.display.Label;
     import com.plter.two.display.Scene;
+    import com.plter.two.supports.threejs.THREE;
+    import com.plter.two.display.TNode;
 
     public class MainScene extends Scene {
 
@@ -19,10 +21,8 @@ package com.plter.uievent {
         }
 
         override public function onClick(eventType:String, x:Number, y:Number, e:MouseEvent):void {
-            console.log(x, y);
-
             if (l.hitTestPoint(x, y)) {
-                alert("Label clicked");
+                console.debug("Label clicked");
             }
         }
     }

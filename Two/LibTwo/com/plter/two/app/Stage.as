@@ -52,7 +52,7 @@ public class Stage {
         return bottom * aspectRatio;
     }
 
-    public function get height():Number {
+    public function get right():Number {
         return top * aspectRatio;
     }
 }

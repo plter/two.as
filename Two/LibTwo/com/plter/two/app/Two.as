@@ -8,7 +8,6 @@ package com.plter.two.app {
     public class Two extends Context {
 
         private var _renderer:*;
-        private var _threeScene:*;
         private var _currentScene2D:Scene;
         private var _showFps:Boolean = false;
         private var _currentFps:Number = 0;
@@ -31,8 +30,7 @@ package com.plter.two.app {
             rendererParams['alpha'] = true;
             _renderer = new THREE.WebGLRenderer(rendererParams);
             _renderer['setSize'](width, height);
-
-            _threeScene = new THREE.Scene();
+            _renderer['setPixelRatio'](window.devicePixelRatio);
 
             //create raycast
             _raycast = new THREE.Raycaster();
@@ -52,10 +50,15 @@ package com.plter.two.app {
             return _defaultScene;
         }
 
-        private function addLight():void {
-            var light:* = new THREE.PointLight(0xffffff, 1, 100);
-            light['position']['z'] = 1;
-            _threeScene.add(light);
+        private function addLight():Boolean {
+            if (scene) {
+                var light:* = new THREE.PointLight(0xffffff, 1, 100);
+                light['position']['z'] = 1;
+                scene.object3D.add(light);
+                return true
+            } else {
+                return false;
+            }
         }
 
         public function get domElement():HTMLCanvasElement {
@@ -69,12 +72,15 @@ package com.plter.two.app {
         }
 
         public function presentScene(scene:Scene):void {
-            if (_currentScene2D) {
-                _threeScene['remove'](_currentScene2D.object3D);
-            }
+            this.scene = scene;
+        }
 
-            _currentScene2D = scene;
-            _threeScene['add'](_currentScene2D.object3D);
+        public function set scene(v:Scene):void {
+            _currentScene2D = v;
+        }
+
+        public function get scene():Scene {
+            return _currentScene2D;
         }
 
 
@@ -111,6 +117,7 @@ package com.plter.two.app {
         private var _oldFps:Number = 0;
 
         private function render(ts:Number = 0):void {
+            _currentDeltaTime = ts;
             var dt:Number = ts - _oldTimestamp;
             _oldTimestamp = ts;
             //calculate the fps
@@ -124,13 +131,14 @@ package com.plter.two.app {
 
             //run update method of scene before render
             if (_currentScene2D) {
+                camera["lookAt"](scene.object3D['position']);
+                camera['updateMatrixWorld']();
                 _currentScene2D.update(_currentDeltaTime);
                 _currentScene2D.onUpdate.dispatch(null, _currentScene2D);
+                _renderer['render'](_currentScene2D.object3D, camera);
             }
-            _renderer['render'](_threeScene, camera);
 
             requestAnimationFrame(render);
-
             _frames++;
         }
 

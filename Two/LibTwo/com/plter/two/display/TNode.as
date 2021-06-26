@@ -31,7 +31,7 @@ package com.plter.two.display {
         }
 
         public function hitTestPoint(pointX:Number, pointY:Number):Boolean {
-            return displayHitTestPoint(pointX, pointY, this, context);
+            return context.tNodeHitTestPoint(pointX, pointY, this);
         }
 
         public function get x():Number {
@@ -175,20 +175,6 @@ package com.plter.two.display {
 
         public function hitTestObject(node:TNode):Boolean {
             return box['intersectsBox'](node.box);
-        }
-
-
-        //Hit test tool
-        private static var _raycast:* = new THREE.Raycaster();
-        private static var _point:* = new THREE.Vector2();
-
-        private static function displayHitTestPoint(x:Number, y:Number, display:TNode, context:Context):Boolean {
-            _point['x'] = x;
-            _point['y'] = y;
-
-            _raycast['setFromCamera'](_point, context.camera);
-            var result:Array = _raycast['intersectObject'](display.object3D);
-            return result.length > 0;
         }
     }
 }
