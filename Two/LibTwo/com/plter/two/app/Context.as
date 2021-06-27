@@ -57,10 +57,13 @@ package com.plter.two.app {
             raycasterHitTestPointer['y'] = y;
             raycaster['setFromCamera'](raycasterHitTestPointer, camera);
             var intersects:Array = raycaster['intersectObjects'](scene.object3D['children']);
+            var result:Array = [];
             for each (var value:* in intersects) {
-                value['node'] = value['object']['node'];
+                var node:TNode = value['object']['node'];
+                node['relatedInfo'] = value;
+                result.push(node);
             }
-            return intersects;
+            return result;
         }
     }
 }
