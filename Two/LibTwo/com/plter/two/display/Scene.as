@@ -123,5 +123,9 @@ package com.plter.two.display {
         public function get onUpdate():EventListenerList {
             return _onUpdate;
         }
+
+        public function getObjectsAtPoint(x:Number, y:Number):Array {
+            return context.getObjectsAtPoint(this, x, y);
+        }
     }
 }

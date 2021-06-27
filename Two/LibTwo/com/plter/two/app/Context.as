@@ -4,6 +4,7 @@
 package com.plter.two.app {
     import com.plter.two.supports.threejs.THREE;
     import com.plter.two.display.TNode;
+    import com.plter.two.display.Scene;
 
     public class Context {
 
@@ -49,6 +50,17 @@ package com.plter.two.app {
             raycaster['setFromCamera'](raycasterHitTestPointer, camera);
             var intersects:Array = raycaster['intersectObject'](display.object3D);
             return intersects.length;
+        }
+
+        public function getObjectsAtPoint(scene:Scene, x:Number, y:Number):Array {
+            raycasterHitTestPointer['x'] = x;
+            raycasterHitTestPointer['y'] = y;
+            raycaster['setFromCamera'](raycasterHitTestPointer, camera);
+            var intersects:Array = raycaster['intersectObjects'](scene.object3D['children']);
+            for each (var value:* in intersects) {
+                value['node'] = value['object']['node'];
+            }
+            return intersects;
         }
     }
 }
