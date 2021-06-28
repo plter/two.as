@@ -1,8 +1,8 @@
 package com.plter.two.anim {
 
-    import org.apache.royale.html.elements.A;
 
-    public class AnimSet {
+
+    public class AnimSet implements IAnim {
 
         private var _animSet:Array = [];
         private var _completeHandler:Function = null;
@@ -78,6 +78,13 @@ package com.plter.two.anim {
 
         public function get completeHandler():Function {
             return _completeHandler;
+        }
+
+        public function reverse():IAnim {
+            for each (var value:IAnim in _animSet) {
+                value.reverse();
+            }
+            return this;
         }
     }
 }
