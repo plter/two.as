@@ -13,7 +13,7 @@ package {
             showFps = true;
 
             var l:Label = new Label(this, "Hello World", 48);
-            defaultScene.addChild(l);
+            scene.addChild(l);
 
             document.body.appendChild(domElement);
         }
