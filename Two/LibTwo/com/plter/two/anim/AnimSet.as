@@ -81,6 +81,7 @@ package com.plter.two.anim {
         }
 
         public function reverse():IAnim {
+            _animSet.reverse();
             for each (var value:IAnim in _animSet) {
                 value.reverse();
             }

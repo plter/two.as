@@ -1,0 +1,12 @@
+{
+    "config": "royale",
+    "compilerOptions": {
+        "source-path": [
+            "src",
+            "../../LibTwo"
+        ],
+        "source-map": true,
+        "html-template": "src/index.template.html"
+    },
+    "mainClass": "Main"
+}
